@@ -5,8 +5,19 @@ import Checkbox from './checkbox'
 export default function Form({ reloadList }) {
   const [text, setText] = useState('')
 
-  // TODO: implement todo creation
-  const createTodo = (event) => {}
+  const createTodo = (event) => {
+
+    event.preventDefault();
+
+    axios.post("/api/todos", { text }, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(res => {
+      reloadList();
+      setText("");
+    })
+  }
 
   return (
     <form
