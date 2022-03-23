@@ -22,19 +22,29 @@ export class TodosController {
     return newControllerData(this.todosDal.create(value));
   }
 
-  //TODO: Implement get all
   getAll(): IControllerResult<Todo[]> {
-    return null;
+    return newControllerData(this.todosDal.getAll());
   }
 
-  //TODO: Implement update
   update(payload: ITodoPayload, id: string): IControllerResult<Todo> {
-    return null;
+    const { error, value } = validateTodoCreatePayload(payload);
+    if (error) {
+      return newControllerError(error.details[0].message, 400);
+    }
+
+    return newControllerData(this.todosDal.edit(value, id));
   }
 
-  //TODO: Implement delete
   delete(id: string): IControllerResult<String> {
-    return null;
+    try {
+      this.todosDal.delete(id);
+      newControllerData("Successfully deleted");
+    } catch (error) {
+      return newControllerError(
+        "Todo not found",
+        400
+      );
+    }
   }
 }
 
