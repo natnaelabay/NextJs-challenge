@@ -15,8 +15,8 @@ export class TodosDal {
       _id: uuid(),
       ...payload,
     };
-    this.todosArray.push(newTodo);
-
+    this.todosArray.splice(0, 0, newTodo);
+    
     return newTodo;
   }
 
@@ -40,7 +40,7 @@ export class TodosDal {
   }
 
   delete(id: string) {
-     _.remove(this.todosArray, { _id: id });
+    _.remove(this.todosArray, { _id: id });
   }
 }
 

@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import express from 'express';
+import cors from 'cors'
 const morgan = require('morgan');
 
 import todosRouter from '../modules/todos/router';
@@ -9,7 +10,7 @@ const app = express();
 
 require('dotenv').config();
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(morgan('dev'));
 
 // todo Router
