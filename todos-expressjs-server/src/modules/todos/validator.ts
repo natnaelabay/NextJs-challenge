@@ -12,9 +12,12 @@ export function validateTodoCreatePayload(
   return schema.validate(payload);
 }
 
-//TODO: implement edit payload validation
 export function validateTodoEditPayload(
   payload: ITodoPayload,
 ): Joi.ValidationResult<any> {
-  return null;
+  const schema = Joi.object({
+    text: Joi.string().required(),
+    completed: Joi.boolean()
+  });
+  return schema.validate(payload);
 }

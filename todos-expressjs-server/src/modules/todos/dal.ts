@@ -41,7 +41,7 @@ export class TodosDal {
   }
 
   delete(id: string) {
-    _.remove(this.todosArray, { _id: id });
+     _.remove(this.todosArray, { _id: id });
   }
 }
 
