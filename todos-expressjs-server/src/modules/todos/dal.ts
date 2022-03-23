@@ -26,7 +26,6 @@ export class TodosDal {
       ...payload,
     };
     const todoIndex = _.findIndex(this.todosArray, { _id: id });
-
     if (todoIndex != -1) this.todosArray[todoIndex] = editedTodo;
 
     return editedTodo;

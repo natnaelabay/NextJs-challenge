@@ -11,13 +11,13 @@ export function validateTodoCreatePayload(
 
   return schema.validate(payload);
 }
-
 export function validateTodoEditPayload(
   payload: ITodoPayload,
 ): Joi.ValidationResult<any> {
   const schema = Joi.object({
     text: Joi.string().required(),
-    completed: Joi.boolean()
+    completed: Joi.boolean(),
   });
   return schema.validate(payload);
 }
+
